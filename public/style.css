@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.center {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2%;
+    display: flex;
+}
+
+/** Header **/
+
+header {
+    width: 100%;
+    padding: 8px 0;
+    background-color: #005f73;
+}
+
+
+.logo {
+    width: 50%;
+    color: #e9d8a6;
+}
+
+.logo h2 {
+    margin-top: 0.4%;
+    display: inline-block;
+}
+
+.logo > i {
+    font-size: 1.5em;
+    margin-right: 0.3em;
+}
+
+.form-search {
+    width: 50%;
+    text-align: right;
+}
+
+.form-search form {
+    display: inline-block;
+    position: relative;
+}
+
+.form-search i {
+    position: absolute;
+    left: 10px;
+    top: 9px;
+    font-size: 20px;
+    color: #94d2bd;
+}
+
+.form-search input {
+    height: 40px;
+    border: none;
+    color: #e9d8a6;
+    background-color: #001219;
+    padding-left: 40px;
+    font-size: 15px;
+    border-radius: 8px
+}
+
+.form-search input:focus { 
+    outline: none;
+}
+
+::placeholder {  /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #8f8159; 
+    opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder { /* Internet Explorer 11-11 */
+    color: #8f8159;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #8f8159;
+}
+
+/*Top News*/
+
+section.top-news {
+    padding: 40px 0;
+}
+
+section.top-news > .center {
+    max-width: 960px;
+}
+
+.author {
+    position: absolute;
+    color: white;
+    z-index: 2;
+    padding: 30px;
+}
+
+.author > span {
+    margin-left: 10px;
+    font-weight: 300;
+    font-size: 0.8em;
+}
+
+.featured-img {
+    width: 100%;
+    position: relative;
+    border-radius: 10px;
+}
+
+.featured-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.highlight-title-desc {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 30px;
+    max-width: 600px;
+    color: white;
+    z-index: 2;
+}
+
+.highlight-title-desc > h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 0.3m;
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    border-radius: 10px;
+}

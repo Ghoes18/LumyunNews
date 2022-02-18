@@ -1,6 +1,6 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import path from 'path';
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express();
 
@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));  // support URL-encoded bodi
 
 app.engine('html', require('ejs').renderFile); // html engine
 app.set('view engine', 'html'); // set html engine
-app.set('/public', express.static(path.join(__dirname, 'public'))); // set where static files are located
+app.use('/public', express.static(path.join(__dirname, 'public'))); // set where static files are located
 app.set('views', path.join(__dirname, '/pages')); // set where views are located
 
 
