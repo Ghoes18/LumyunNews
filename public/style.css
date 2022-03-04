@@ -6,10 +6,11 @@
 }
 
 .center {
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0 2%;
     display: flex;
+    flex-wrap: nowrap;
 }
 
 /** Header **/
@@ -19,7 +20,6 @@ header {
     padding: 8px 0;
     background-color: #005f73;
 }
-
 
 .logo {
     width: 50%;
@@ -99,7 +99,7 @@ section.top-news > .center {
 .author > span {
     margin-left: 10px;
     font-weight: 300;
-    font-size: 0.8em;
+    font-size: 0.8rem;
 }
 
 .featured-img {
@@ -118,16 +118,16 @@ section.top-news > .center {
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: 30px;
+    padding: 55px;
     max-width: 600px;
     color: white;
     z-index: 2;
 }
 
 .highlight-title-desc > h1 {
-    font-size: 2.5em;
+    font-size: 2.5rem;
     font-weight: bold;
-    margin-bottom: 0.3m;
+    margin-bottom: 0.3rem;
 }
 
 .overlay {
@@ -139,4 +139,183 @@ section.top-news > .center {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
     border-radius: 10px;
+}
+
+/* Other News */
+
+section.other-news {
+    background-color: #EAEAEA;
+    padding: 30px 0;
+    text-align: center;
+}
+
+section.other-news h1 {
+    font-size: 3.3rem;
+    margin-bottom: 80px;
+}
+
+.last-news {
+    width: 60%;
+    padding: 0 10px;
+    display: flex;
+}
+
+.most-read {
+    width: 40%;
+    height: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.most-read > h3 {
+    background-color: #0A9396;
+    color: #E9D8A6;
+    text-align: center;
+    letter-spacing: 0.35px;
+    padding: 10px 8px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.box-last-single {
+    text-align: left;
+    width: 48%;
+    margin-right: 2%;
+    background-color: #FFF;
+    padding-bottom: 20px;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.box-last-single img {
+    width: 100%;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.box-last-single h3 {
+    color: #001219;
+    font-size: 0.8rem;
+    margin: 20px 0;
+}
+
+.box-last-single h2 {
+    color: #303336;
+    font-size: 1.5rem;
+}
+
+.content-last-single {
+    padding: 20px;
+    
+}
+
+.content-last-single p {
+    color: #7B8591;
+    font-size: 1rem;
+    margin: 17px 0;
+}
+
+.content-last-single a {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    color: #0AACDC;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+    font-weight: bold;
+    margin: 25px 0;
+}
+
+.content-last-single a:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.content-last-single a:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Most Read */
+
+.most-read-news-single {
+    display: flex;
+    padding: 30px;
+    text-align: left;
+}
+
+.most-read-news-single img {
+    width: 40%;
+    height: 100%;
+}
+
+.most-read-news-single .text-most-read-news-single {
+    width: 70%;
+    padding: 0 20px;
+}
+
+.text-most-read-news-single h4 {
+    color: #40BE65;
+    letter-spacing: 1px;
+}
+
+.text-most-read-news-single p {
+    color: #7B8591;
+    font-size: .8rem;
+}
+
+.text-most-read-news-single a {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    color: #0AACDC;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.text-most-read-news-single a:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.text-most-read-news-single a:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/*Footer*/
+
+footer {
+    text-align: center;
+    padding: 30px 0;
+}
+
+
+footer .contacts-single {
+    display: inline-block;
+    margin: 0 28px;
+}
+
+footer .contacts-single p {
+    display: inline-block;
+}
+
+footer .contacts-single i {
+    margin-right: 3px;
 }
