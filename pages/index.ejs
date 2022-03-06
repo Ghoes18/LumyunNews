@@ -1,0 +1,48 @@
+<%- include('partials/header.ejs') %>
+    <section class="top-news">
+        <div class="center">
+            <div class="featured-img">
+                <div class="overlay"></div>
+                <%- include('partials/author.ejs') %>
+                <div class="highlight-title-desc">
+                    <h1>Está farto do cliché de praias no verão?</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo consequatur quod esse ipsa
+                        voluptatum libero necessitatibus aliquid nemo!</p>
+                </div>
+                <img src="/public/images/lake-landscape.jpeg" alt="lake" />
+            </div>
+        </div>
+    </section>
+    <section class="other-news">
+        <div class="title-other-news">
+            <h1>Últimas Notícias</h1>
+            <div class="center">
+                <div class="last-news">
+                    <div class="box-last-single">
+                        <img src="/public/images/noticia.png" alt="noticia">
+                        <div class="content-last-single">
+                            <h3>DICA DE AVENTURA</h3>
+                            <h2>Como surfar mesmo estando frio</h2>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi totam voluptatibus
+                                quibusdam ratione tempora quae, necessitatibus vel qui dolorum suscipit quam eum fugit
+                                doloribus consequatur provident ullam magni dolorem natus.</p>
+                            <a href="/surfar-no-frio">SAIBA MAIS</a>
+                        </div>
+                    </div>
+                    <div class="box-last-single">
+                        <img src="/public/images/noticia.png" alt="noticia">
+                        <div class="content-last-single">
+                            <h3>DICA DE AVENTURA</h3>
+                            <h2>Como surfar mesmo estando frio</h2>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi totam voluptatibus
+                                quibusdam ratione tempora quae, necessitatibus vel qui dolorum suscipit quam eum fugit
+                                doloribus consequatur provident ullam magni dolorem natus.</p>
+                            <a href="/surfar-no-frio">SAIBA MAIS</a>
+                        </div>
+                    </div>
+                </div>
+                <%- include('partials/most_read.ejs') %>
+            </div>
+        </div>
+    </section>
+    <%- include('partials/footer.ejs') %>
