@@ -20,12 +20,13 @@ app.get('/', (req, res) => {
     if(req.query.search == null) {
         res.render('index', {});
     } else {
-        res.send('You searched for: ' + req.query.search);
+        res.render('search', {});
     }
 });
 
 app.get('/:slug', (req, res) => {
-    res.send(req.params.slug); // localhost:5000/a-notice => a-notice
+    //res.send(req.params.slug); // localhost:5000/a-notice => a-notice
+    res.render('single.ejs', {});
 });
 
 app.listen(3000, () => {
