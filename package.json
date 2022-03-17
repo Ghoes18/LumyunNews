@@ -2,9 +2,10 @@
   "name": "lumyun-news",
   "version": "1.0.0",
   "description": "News Website",
-  "main": "index.mjs",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon .",
+    "init-db": "node src/db/init.js"
   },
   "repository": {
     "type": "git",
@@ -15,6 +16,7 @@
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.2",
+    "mongoose": "^6.2.4",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
