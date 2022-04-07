@@ -132,10 +132,10 @@ section.top-news > .center {
     z-index: 2;
 }
 
-.highlight-title-desc > h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 0.3rem;
+.highlight-title-desc a  {
+    color: white;
+    text-decoration: none;
+    font-size: 1.7rem;
 }
 
 .overlay {
@@ -195,9 +195,17 @@ section.other-news h1 {
     border-radius: 10px;
 }
 
-.box-last-single img {
+.box-last-single .image-container {
     width: 100%;
+    height: 200px;
+    overflow: hidden;
     border-radius: 10px 10px 0px 0px;
+}
+
+.box-last-single .image-container > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .box-last-single h3 {
