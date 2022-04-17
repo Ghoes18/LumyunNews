@@ -13,6 +13,10 @@ const postSchema = new Schema({
     },
     description: String,
     author: String,
+    views: {
+        type: Number,
+        default: 0
+    },
 }, {collection: 'posts'});
 
 const Posts = mongoose.model('Posts', postSchema);

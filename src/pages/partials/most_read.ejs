@@ -1,37 +1,15 @@
 <div class="most-read">
     <h3>AS MAIS LIDAS</h3>
     <div class="most-read-news">
+        <% for(let i = 0; i < postsTop.length; i++) { %>
         <div class="most-read-news-single">
-            <img src="/public/images/natureza.jpg" alt="natureza">
+            <img src="<%= postsTop[i].image %> ">
             <div class="text-most-read-news-single">
-                <h4>Natureza</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, corporis.</p>
-                <a href="/nature">SAIBA MAIS</a>
+                <h4><%= postsTop[i].title %></h4>
+                <p><%= postsTop[i].description %></p>
+                <a href="<%= postsTop[i].slug %> ">SAIBA MAIS</a>
             </div>
         </div>
-        <div class="most-read-news-single">
-            <img src="/public/images/natureza.jpg" alt="natureza">
-            <div class="text-most-read-news-single">
-                <h4>Natureza</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, corporis.</p>
-                <a href="/nature">SAIBA MAIS</a>
-            </div>
-        </div>
-        <div class="most-read-news-single">
-            <img src="/public/images/natureza.jpg" alt="natureza">
-            <div class="text-most-read-news-single">
-                <h4>Natureza</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, corporis.</p>
-                <a href="/nature">SAIBA MAIS</a>
-            </div>
-        </div>
-        <div class="most-read-news-single">
-            <img src="/public/images/natureza.jpg" alt="natureza">
-            <div class="text-most-read-news-single">
-                <h4>Natureza</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, corporis.</p>
-                <a href="/nature">SAIBA MAIS</a>
-            </div>
-        </div>
+        <% } %>
     </div>
 </div>

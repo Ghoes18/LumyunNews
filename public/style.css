@@ -162,28 +162,17 @@ section.other-news h1 {
     margin-bottom: 80px;
 }
 
-.last-news {
+.last-news-container {
     width: 60%;
-    padding: 0 10px;
+}
+
+.last-news {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
 }
 
-.most-read {
-    width: 40%;
-    height: 100%;
-    background-color: white;
-    border-radius: 10px;
-}
-
-.most-read > h3 {
-    background-color: #0A9396;
-    color: #E9D8A6;
-    text-align: center;
-    letter-spacing: 0.35px;
-    padding: 10px 8px;
-    border-radius: 10px 10px 0px 0px;
-}
 
 .box-last-single {
     text-align: left;
@@ -192,7 +181,9 @@ section.other-news h1 {
     background-color: #FFF;
     padding-bottom: 20px;
     height: 100%;
+    min-height: 540px;
     border-radius: 10px;
+    margin-bottom: 2%;
 }
 
 .box-last-single .image-container {
@@ -261,6 +252,22 @@ section.other-news h1 {
 
 /* Most Read */
 
+.most-read {
+    width: 40%;
+    height: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.most-read > h3 {
+    background-color: #0A9396;
+    color: #E9D8A6;
+    text-align: center;
+    letter-spacing: 0.35px;
+    padding: 10px 8px;
+    border-radius: 10px 10px 0px 0px;
+}
+
 .most-read-news-single {
     display: flex;
     padding: 30px;
@@ -278,8 +285,8 @@ section.other-news h1 {
 }
 
 .text-most-read-news-single h4 {
-    color: #40BE65;
-    letter-spacing: 1px;
+    letter-spacing: .7px;
+    margin-bottom: .5px;
 }
 
 .text-most-read-news-single p {
@@ -370,13 +377,34 @@ section.new {
     color: #7B8591;
     font-size: 1rem;
     line-height: 24px;
- }
+}
 
- .new-single h2 {
+.new-single h2 {
     color: #757f92;
     font-size: 1.5rem;
     margin: 10px 0;
  }
+
+/* Single */
+.image-container-single {
+    width: 100%;
+    height: 20rem;
+    overflow: hidden;
+    border-radius: 10px 10px 10px 10px;
+    margin-bottom: 20px;
+}
+
+.image-container-single > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+p > span {
+    color: #0AACDC;
+    font-weight: bold;
+}
+
 
 /*Responsive*/
 
@@ -419,6 +447,15 @@ section.new {
     }
     .last-news {
         height: 100%;
+    }
+    .last-news-container {
+        width: 100%;
+        height: 100%;
+        padding: 30px;
+        text-align: left;
+    }
+    .title-other-news > .center {
+        display: block;
     }
     footer {
         text-align: center;

@@ -2,55 +2,20 @@
     <section class="new">
         <div class="center">
             <div class="new-single">
-                <h1>O que é Node.js</h1>
-                <%- include('partials/author.ejs') %>
-                    <p>
-                        Node.js é um fenômeno tem vários anos já. Diversos players gigantes da indústria de Internet tem
-                        adotado a plataforma, seja como uma ferramenta auxiliar, seja como sua principal tecnologia. O
-                        fato é que funciona, é eficiente e eficaz.
-
-                        A ideia do post de hoje é explicar de uma vez por todas o que é Node.js e também solucionar
-                        outras dúvidas mais fundamentais, ao mesmo tempo em que apresento os principais conceitos de
-                        Node.js, suas principais características, vantagens, desvantagens, tecnologias concorrentes e
-                        falar das principais extensões.
-                    </p>
-                    <h2>Fundamentos</h2>
-                    <p>
-                        Node.js não é uma linguagem de programação. Você programa utilizando a linguagem JavaScript, a
-                        mesma usada há décadas no client-side das aplicações web. Javascript é uma linguagem de
-                        scripting interpretada, embora seu uso com Node.js guarde semelhanças com linguagens compiladas,
-                        uma vez que máquina virtual V8 (veja mais adiante) faz etapas de pré-compilação e otimização
-                        antes do código entrar em operação.
-
-                        Node.js não é um framework Javascript. Ele está mais para uma plataforma de aplicação, na qual
-                        você escreve seus programas com Javascript que serão compilados, otimizados e interpretados pela
-                        máquina virtual V8. Essa VM é a mesma que o Google utiliza para executar Javascript no browser
-                        Chrome, e foi a partir dela que o criador do Node.js, Ryan Dahl, criou o projeto. O resultado
-                        desse processo híbrido é entregue como código de máquina server-side, tornando o Node.js muito
-                        eficiente na sua execução e consumo de recursos.
-
-                        Node.js é uma tecnologia assíncrona que trabalha em uma única thread de execução. Por assíncrona
-                        entenda que cada requisição ao Node.js não bloqueia o processo do mesmo, atendendo a um volume
-                        absurdamente grande de requisições ao mesmo tempo mesmo sendo single thread. Para lidar bem com
-                        isso, você terá de aprender callbacks e promises (clique no link se quiser aprender).
-
-                        Imagine que existe apenas um fluxo de execução (chamado de Event Loop). Quando chega uma
-                        requisição, ela entra nesse fluxo, a máquina virtual Javascript verifica o que tem de ser feito,
-                        delega a atividade (consultar dados no banco, por exemplo) e volta a atender novas requisições
-                        enquanto este processamento paralelo está acontecendo. Quando a atividade termina (já temos os
-                        dados retornados pelo banco), ela volta ao fluxo principal para ser devolvida ao requisitante.
-
-                        Isso é diferente do funcionamento tradicional da maioria das linguagens de programação, que
-                        trabalham com o conceito de multi-threading, onde, para cada requisição recebida, cria-se uma
-                        nova thread para atender à mesma. Isso porque a maioria das linguagens tem comportamento
-                        bloqueante na thread em que estão, ou seja, se uma thread faz uma consulta pesada no banco de
-                        dados, a thread fica travada até essa consulta terminar.
-
-                        Esse modelo de trabalho tradicional, com uma thread por requisição (multi-thread) é mais fácil
-                        de programar, mas mais oneroso para o hardware, consumindo muito mais recursos.
-                    </p>
+                <h1>
+                    <%= post.title %>
+                </h1>
+                <p><span>categoria:</span> <%= post.category %> </p>
+                <div class="author">
+                    <i class="fa-solid fa-user"></i>
+                    <span>POR <%= post.author %></span>
+                </div>
+                <div class="image-container-single">
+                    <img src="<%= post.image %>">
+                </div>
+                <%- post.content %>
             </div>
             <%- include('partials/most_read.ejs') %>
         </div>
     </section>
-    <%- include('partials/footer.ejs') %>
+<%- include('partials/footer.ejs') %>

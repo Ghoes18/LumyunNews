@@ -4,11 +4,17 @@
             <div class="featured-img">
                 <div class="overlay"></div>
                 <%- include('partials/author.ejs') %>
-                <div class="highlight-title-desc">
-                    <a href="<%= posts[0].slug %>"><h1><%= posts[0].title %></h1></a>
-                    <p><%= posts[0].description %> </p>
-                </div>
-                <img src="<%= posts[0].image %>" />
+                    <div class="highlight-title-desc">
+                        <a href="<%= posts[0].slug %>">
+                            <h1>
+                                <%= posts[0].title %>
+                            </h1>
+                        </a>
+                        <p>
+                            <%= posts[0].description %>
+                        </p>
+                    </div>
+                    <img src="<%= posts[0].image %>" />
             </div>
         </div>
     </section>
@@ -16,23 +22,31 @@
         <div class="title-other-news">
             <h1>Últimas Notícias</h1>
             <div class="center">
-                <div class="last-news">
-                    <% for (let i = 1; i < posts.length; i++) { %> 
-                    <div class="box-last-single">
-                        <div class="image-container">
-                            <img src="<%= posts[i].image %>">
-                        </div>
-                        <div class="content-last-single">
-                            <h3><%= posts[i].category %> </h3>
-                            <h2><%= posts[i].title %></h2>
-                            <p><%= posts[i].description %></p>
-                            <a href="<%= posts[i].slug %>">SAIBA MAIS</a>
+                    <div class="last-news-container">
+                        <div class="last-news">
+                            <% for(let i=1; i < posts.length; i++) { if(i < 9) { %>
+                                    <div class="box-last-single">
+                                        <div class="image-container">
+                                            <img src="<%= posts[i].image %>">
+                                        </div>
+                                        <div class="content-last-single">
+                                            <h3>
+                                                <%= posts[i].category %>
+                                            </h3>
+                                            <h2>
+                                                <%= posts[i].title %>
+                                            </h2>
+                                            <p>
+                                                <%= posts[i].description %>
+                                            </p>
+                                            <a href="<%= posts[i].slug %>">SAIBA MAIS</a>
+                                        </div>
+                                    </div>
+                            <% } else { break; } } %>
                         </div>
                     </div>
-                    <% } %>
-                </div>
                 <%- include('partials/most_read.ejs') %>
             </div>
         </div>
     </section>
-    <%- include('partials/footer.ejs') %>
+<%- include('partials/footer.ejs') %>

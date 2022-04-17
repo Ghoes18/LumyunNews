@@ -3,40 +3,18 @@
 </br>
 <div class="center">
     <div style="width: 100%;" class="most-read">
-        <h3>4 Resultados</h3>
+        <h3>Resultados obtidos: <%= counter %></h3>
         <div class="most-read-news">
+            <% for(let i = 0; i < posts.length; i++) { %>
             <div class="most-read-news-single">
-                <img src="/public/images/natureza.jpg" alt="natureza">
+                <img src="<%= posts[i].image %> ">
                 <div class="text-most-read-news-single">
-                    <h4>Natureza</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, corporis.</p>
-                    <a href="/nature">SAIBA MAIS</a>
+                    <h4><%= posts[i].title %> </h4>
+                    <p><%= posts[i].description %></p>
+                    <a href="<%= posts[i].slug %> ">SAIBA MAIS</a>
                 </div>
             </div>
-            <div class="most-read-news-single">
-                <img src="/public/images/natureza.jpg" alt="natureza">
-                <div class="text-most-read-news-single">
-                    <h4>Natureza</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, corporis.</p>
-                    <a href="/nature">SAIBA MAIS</a>
-                </div>
-            </div>
-            <div class="most-read-news-single">
-                <img src="/public/images/natureza.jpg" alt="natureza">
-                <div class="text-most-read-news-single">
-                    <h4>Natureza</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, corporis.</p>
-                    <a href="/nature">SAIBA MAIS</a>
-                </div>
-            </div>
-            <div class="most-read-news-single">
-                <img src="/public/images/natureza.jpg" alt="natureza">
-                <div class="text-most-read-news-single">
-                    <h4>Natureza</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, corporis.</p>
-                    <a href="/nature">SAIBA MAIS</a>
-                </div>
-            </div>
+            <% } %>
         </div>
     </div>
 </div>
