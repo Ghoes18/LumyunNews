@@ -15,8 +15,8 @@ app.set('view engine', 'ejs'); // set ejs engine
 app.use('/public', express.static(path.join(__dirname, '../public'))); // set where static files are located
 app.set('views', path.join(__dirname, 'pages')); // set where views are located
 app.use(favicon(path.join(__dirname, '../public/images', 'favicon.ico'))); // set favicon
-app.use(route); // set route
 
+app.use(route); // set route
 
 app.listen(3000, () => {
     console.log('http://localhost:3000');
