@@ -146,6 +146,13 @@ span {
     margin-top: 0.5em;
 }
 
+#error-message {
+    display: none;
+    color: red;
+    font-size: 0.8em;
+    margin-top: 0.5em;
+}
+
 /* Sidebar */
 .sidebar {
     width: 10vh;
@@ -160,6 +167,7 @@ span {
     margin-left: 0px;
     border-radius: 5px;
     margin: 2% 0;
+    z-index: 1000;
 }
 
 .sidebar ul {

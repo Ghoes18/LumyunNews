@@ -9,7 +9,7 @@ const Admin = require('./db/Admin');
 route.use(session({
     secret: 'safasfcgxgbcvdf124!',
     cookie: {
-        maxAge: 1000 * 60 * 60 * 4, // 4 hours
+        maxAge: 1000 * 60 * 60 * 4 // 4 hours
     }
 }));
 
@@ -125,8 +125,11 @@ route.post('/admin/login', async (req, res) => {
     });
     if (login != null) {
         req.session.login = true;
-    } 
-    res.redirect('/admin/login');
+        res.redirect('/admin/login');
+    } else {
+        req.session.login = false;
+        res.redirect('/admin/login?error=true');
+    }
 });
 
 route.get('/admin/logout', (req, res) => {
@@ -141,6 +144,5 @@ route.get('/admin/forgot-password', (req, res) => {
 route.get('/admin/profile', (req, res) => {
     res.render('admin-profile');
 });
-
 
 module.exports = route;
