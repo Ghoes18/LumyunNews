@@ -13,3 +13,8 @@ window.onload = () => {
         });
     }
 }
+
+function closeModal() {
+    const modal = document.querySelector('.modal-success');
+    modal.style.display = 'none';
+}

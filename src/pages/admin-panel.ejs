@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-PT">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumyun News - Dashborad</title>
-    <!--Font Awesome-->
-    <script src="https://kit.fontawesome.com/98221d8909.js" crossorigin="anonymous"></script>
-    <!--Google Fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-    <!--CSS-->
-    <link rel="stylesheet" href="../public/admin.css">
-</head>
+<%- include('partials/header-admin.ejs') %>
 
 <body>
     <header>
@@ -37,6 +21,28 @@
             </div>
         </div>
     </header>
+    <div class="main">
+        <div class="welcome">
+            <div class="center">
+                <h1>Bem vindo ao painel de administração</h1>
+                <p>Aqui você pode gerenciar todas as informações do site.</p>
+                <div class="day">
+                    <span>Hoje é dia</span>
+                    <h2>
+                        <span>
+                            <%= moment().format('DD') %><
+                        </span>
+                        <span>
+                            <%= moment().format('MMMM') %>
+                        </span>
+                        <span>
+                            <%= moment().format('YYYY') %>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
     <%- include('partials/navbar.ejs') %>
 </body>
 

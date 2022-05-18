@@ -1,10 +1,14 @@
 const express = require('express');
 const session = require('express-session');
+const crypto = require('crypto');
 
 const route = express.Router();
 
 const Posts = require('./db/Posts');
 const Admin = require('./db/Admin');
+const ResetPassword = require('./db/ResetPassword');
+
+const emailSender = require('./nodemailer');
 
 route.use(session({
     secret: 'safasfcgxgbcvdf124!',
@@ -111,7 +115,7 @@ route.get('/:slug', (req, res) => {
 });
 
 route.get('/admin/login', (req, res) => {
-    if(req.session.login == true) {
+    if (req.session.login == true) {
         res.render('admin-panel');
     } else {
         res.render('admin-login');
@@ -138,7 +142,100 @@ route.get('/admin/logout', (req, res) => {
 });
 
 route.get('/admin/forgot-password', (req, res) => {
-    
+    if (req.session.login == true) {
+        res.redirect('/admin/login');
+        return;
+    }
+    res.render('admin-forget-password');
+});
+
+route.post('/admin/forgot-password', async (req, res) => {
+    const { email } = req.body;
+    const user = await Admin.findOne({
+        email
+    });
+    if (user != null) {
+        // generate the hash with 20 characters
+        const hash = crypto.randomBytes(20).toString('hex');
+        // verify if in database exists a hash equal to the hash generated
+        let verifyHash = await ResetPassword.findOne({
+            token: hash
+        });
+        while (verifyHash != null) {
+            const hash = crypto.randomBytes(20).toString('hex');
+            verifyHash = await ResetPassword.findOne({
+                hash
+            });
+        }
+        const resetPassword = new ResetPassword({
+            email: user.email,
+            token: hash,
+            name: user.name
+        });
+        await resetPassword.save();
+        // send email
+        emailSender.sendEmailToAdmin(user.email, user.name, hash);
+        res.redirect('/admin/login');
+    } else {
+        res.redirect('forgot-password?error=true');
+    }
+});
+
+route.get('/admin/reset-password/:token', async (req, res) => {
+    const { token } = req.params;
+    // search in the database if exists a hash equal to the token
+    const user = await ResetPassword.findOne({
+        token
+    });
+    if (user != null) {
+        // render the reset password page with the necessary data
+        res.render('admin-reset-password', {
+            user: user.name,
+            email: user.email,
+        });
+    } else {
+        res.redirect('/admin/login');
+    }
+});
+
+route.post('/admin/reset-password/:token', async (req, res) => {
+    if (req.body.submit == 'accpet') {
+        const { token } = req.params;
+        const user = await ResetPassword.findOne({
+            token
+        });
+        if (user != null) {
+            // generate a random password with length of 8
+            const password = crypto.randomBytes(8).toString('hex');
+            // update the password
+            await Admin.findOneAndUpdate({
+                email: user.email
+            }, {
+                password
+            });
+            // send the email to the user
+            emailSender.sendEmailToUser(user.email, user.name, password, true);
+            // delete the token from the database
+            await ResetPassword.findOneAndRemove({
+                token
+            });
+            res.redirect('/admin/login');
+        }
+    } else if (req.body.submit == 'cancel') {
+        const { token } = req.params;
+        const user = await ResetPassword.findOne({
+            token
+        });
+        if (user != null) {
+            // send a email
+            emailSender.sendEmailToUser(user.email, user.name, null, false);
+            res.redirect('/admin/login');
+            // delete the token from the database
+            await ResetPassword.findOneAndDelete({
+                token
+            });
+        }
+    }
 });
 
 route.get('/admin/profile', (req, res) => {

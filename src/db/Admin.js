@@ -1,14 +1,15 @@
 const mongoose = require('./init.js');
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
-const postSchema = new Schema({
+const adminSchema = new Schema({
     email: String,
     password: String,
-    category: String,
+    categorys: [{
+        type: Array,
+        default: []
+    }],
     last_login: String,
     name: String,
 }, {collection: 'admin'});
 
-const Admin = mongoose.model('Admin', postSchema);
-
-module.exports = Admin;
+module.exports = mongoose.model('Admin', adminSchema);

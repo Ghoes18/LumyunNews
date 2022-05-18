@@ -1,5 +1,5 @@
 const mongoose = require('./init.js');
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 const postSchema = new Schema({
     title: String,
@@ -19,7 +19,4 @@ const postSchema = new Schema({
     },
 }, {collection: 'posts'});
 
-const Posts = mongoose.model('Posts', postSchema);
-
-module.exports = Posts;
-
+module.exports = mongoose.model('Post', postSchema);

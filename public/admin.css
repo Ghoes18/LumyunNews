@@ -153,67 +153,251 @@ span {
     margin-top: 0.5em;
 }
 
-/* Sidebar */
-.sidebar {
-    width: 10vh;
-    height: 85vh;
-    background-color: #005f73;
-    color: #fff;
-    -webkit-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-    position: relative;
-    margin-top: 0px;
-    margin-left: 0px;
-    border-radius: 5px;
-    margin: 2% 0;
-    z-index: 1000;
-}
+/* Forget Password Form */
 
-.sidebar ul {
-    list-style-type: none;
-    padding: 15px 15px 0px 15px;
-}
-
-.sidebar li {
-    margin-top: 10px;
-}
-
-.sidebar a {
-    text-decoration: none;
-    color: #fff;
-    display: block;
-    transition: all 0.3s;
-    font-size: 20px;
+.form-forget-password {
+    width: 30%;
+    height: auto;
     text-align: center;
-    margin-bottom: 10px;
+    margin: 15vh auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.sidebar p {
-    font-size: 1.2em;
-    display: none;
+.form-forget-password .top-form {
+    background-color: #e9d8a6;
+    padding: 1.5em;
+    margin-bottom: 10%;
+    border-radius: 5px 5px 0 0;
 }
 
-.sidebar:hover {
-    width: 30vh;
-    margin-left: 0;
-    border-radius: 12px;
+.form-forget-password .top-form > h1 {
+    font-size: 1.8em;
+    color: #005f73;
 }
 
-.sidebar:hover a {
-    display: flex;
-    padding-left: 1rem;
-    text-align: left;
-    font-size: 1.2em;
-    align-items: center;
+.form-forget-password form {
+    width: 100%;
+    padding: 2% 0;
+    text-align: center;
 }
 
-.sidebar:hover p {
-    display: block;
+.form-forget-password form input {
+    width: 75%;
+    padding: 0.5em;
+}
+
+.form-forget-password form input[type="email"] {
+    margin-bottom: 2em;
+    padding: 1em;
+    border: none;
+    border-radius: 0.3em;
+}
+
+.form-forget-password form input[type="email"]:focus {
+    outline: none;
+}
+
+.form-forget-password form input[type="submit"] {
+    background-color: #005f73;
+    color: #e9d8a6;
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
     font-size: 1em;
-    margin-left: 1rem;
+    padding: 1em;
+    margin-bottom: 2em;
 }
 
-.sidebar p:hover {
+.form-forget-password form input[type="submit"]:hover {
+    background-color: #044b5a;
+}
+
+.modal-success {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99999;
+}
+
+.modal-success .modal-content {
+    background-color: #fff;
+    width: 40%;
+    height: auto;
+    margin: 27vh auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 2em;
+}
+
+.modal-success .modal-content h1 {
+    font-size: 1.8em;
+    color: #005f73;
+}
+
+.modal-success .modal-content p {
+    font-size: 1em;
+}
+
+.modal-success .modal-content button {
+    background-color: #005f73;
+    color: #e9d8a6;
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 1em;
+    margin-bottom: 2em;
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 1.8em;
+}
+
+.modal-success .modal-content button:hover {
+    background-color: #044b5a;
+}
+
+.form-forget-password > #error-message {
+    padding: 0.5em;
+}
+
+/* Reset Password Form */
+
+.form-reset-password {
+    width: 40%;
+    height: auto;
+    margin: 15vh auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-reset-password form {
+    width: 100%;
+}
+
+.form-reset-password form .top-form {
+    background-color: #e9d8a6;
+    padding: 1.5em;
+    margin-bottom: 5%;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+}
+
+.form-reset-password form .top-form > h1 {
+    font-size: 1.8em;
+    color: #005f73;
+}
+
+.form-reset-password form .info-form {
+    width: 100%;
+    padding: 7%;
+}
+
+.form-reset-password form .info-form span {
+    text-decoration: underline;
+    color: #005f73;
+}
+
+.form-reset-password form .bottom-form {
+    width: 100%;
+    padding: 2%;
+}
+
+.form-reset-password form .bottom-form button#accept {
+    background-color: #005f73;
+    color: #e9d8a6;
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 1em;
+    margin-bottom: 2em;
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 1.8em;
+}
+
+.form-reset-password form .bottom-form button#accept:hover {
+    background-color: #044b5a;
+}
+
+.form-reset-password form .bottom-form button#cancel {
+    background-color: #c41313;
+    color: #e9d8a6;
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 1em;
+    margin-bottom: 5em;
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 1.8em;
+}
+
+.form-reset-password form .bottom-form button#cancel:hover {
+    background-color: #a20f0f;
+}
+/* Sidenav */
+
+.sidenav {
+    height: 80vh;
+    width: 6%;
+    position: fixed;
+    z-index: 1;
+    top: 15%;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding: 14px;
+    background-color: #005f73;
+    border-radius: 0 5px 5px 0;
+}
+
+.sidenav ul {
+    list-style-type: none;
+}
+
+.sidenav ul > li {
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.sidenav ul > li > a {
+    color: #e9d8a6;
+    text-decoration: none;
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+}
+
+.sidenav ul > li > a > p {
+    display: none;
+    padding-left: 0.5em;
+}
+
+.sidenav ul > li > a > i {
+    font-size: 1.3em;
+    margin: 0 auto;
+    margin-bottom: 0.5em;
+}
+
+.sidenav:hover {
+    width: 15%;
+}
+
+.sidenav:hover ul > li > a > p {
+    display: inline-block;
+}
+
+.sidenav ul > li > a > p:hover {
     text-decoration: underline;
 }
