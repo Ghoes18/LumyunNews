@@ -401,3 +401,126 @@ span {
 .sidenav ul > li > a > p:hover {
     text-decoration: underline;
 }
+
+/* Admin Page */
+
+main .welcome {
+    width: 100%;
+    height: auto;
+    margin: 15vh auto;
+    border-radius: 5px;
+}
+
+main .welcome .welcome-content {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+main .welcome .welcome-content h1 {
+    font-size: 2.5em;
+    color: #005f73;
+}
+
+main .welcome .welcome-content p {
+    font-size: 1.2em;
+}
+
+main .welcome .day {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+main .welcome .day span {
+    font-size: 1.2em;
+    color: #000;
+}
+
+main .welcome .day h2 > span {
+    font-size: 1.2em;
+    color: #005f73;
+}
+
+/* Make a Post */
+
+main .make-post-container {
+    width: 80%;
+    height: auto;
+    margin: 15vh auto;
+    border-radius: 5px;
+}
+
+main .make-post-container form {
+    width: 100%;
+}
+
+main .make-post-container form p > label {
+    font-size: 1.2em;
+    color: #005f73;
+    display: block;
+    margin: 0.5em 0;
+}
+
+main .make-post-container form p > input {
+    width: 40%;
+    height: auto;
+    margin: 0 auto;
+    padding: .8em;
+    border-radius: 0.3em;
+    border: 1px solid #bfc8ca;
+    color: #000;
+}
+
+main .make-post-container form p > textarea {
+    width: 40%;
+    height: auto;
+    margin: 0 auto;
+    padding: .8em;
+    border-radius: 0.3em;
+    border: 1px solid #bfc8ca;
+    color: #000;
+}
+
+main .make-post-container form p > select {
+    width: 40%;
+    height: auto;
+    margin: 0 auto;
+    padding: .8em;
+    border-radius: 0.3em;
+    border: 1px solid #bfc8ca;
+    color: #000;
+}
+
+main .make-post-container form p > button[type="submit"][name="create"] {
+    background-color: #005f73;
+    color: #e9d8a6;
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
+    margin-bottom: 2em;
+    margin: 0 auto;
+    margin-top: 1.8em;
+    width: 35%;
+    padding: 1em;
+    margin-right: 2em;
+}
+
+main .make-post-container form p > button[type="submit"][name="discard"] {
+    background-color: #c41313;
+    color: #e9d8a6;
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
+    margin-bottom: 2em;
+    margin: 0 auto;
+    margin-top: 1.8em;
+    padding: 1em;
+    width: 35%;
+}
+
+main .make-post-container form p:last-child {
+    text-align: center;
+}

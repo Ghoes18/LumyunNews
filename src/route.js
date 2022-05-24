@@ -1,12 +1,17 @@
 const express = require('express');
 const session = require('express-session');
 const crypto = require('crypto');
+const moment = require('moment');
+const slugify = require('slugify');
 
 const route = express.Router();
+moment.locale('pt-pt');
 
 const Posts = require('./db/Posts');
 const Admin = require('./db/Admin');
 const ResetPassword = require('./db/ResetPassword');
+const Categories = require('./db/Categories');
+const PostsToReview = require('./db/PostsToReview');
 
 const emailSender = require('./nodemailer');
 
@@ -115,8 +120,11 @@ route.get('/:slug', (req, res) => {
 });
 
 route.get('/admin/login', (req, res) => {
-    if (req.session.login == true) {
-        res.render('admin-panel');
+    if (req.session.login) {
+        res.render('admin-panel', {
+            moment,
+            login: req.session.login,
+        });
     } else {
         res.render('admin-login');
     }
@@ -128,7 +136,13 @@ route.post('/admin/login', async (req, res) => {
         password: req.body.password
     });
     if (login != null) {
-        req.session.login = true;
+        req.session.login = login.name;
+        // register last login
+        Admin.findOneAndUpdate({
+            email: req.body.email
+        }, {
+            last_login: moment().format('LLLL')
+        });
         res.redirect('/admin/login');
     } else {
         req.session.login = false;
@@ -142,7 +156,7 @@ route.get('/admin/logout', (req, res) => {
 });
 
 route.get('/admin/forgot-password', (req, res) => {
-    if (req.session.login == true) {
+    if (req.session.login) {
         res.redirect('/admin/login');
         return;
     }
@@ -237,6 +251,53 @@ route.post('/admin/reset-password/:token', async (req, res) => {
         }
     }
 });
+
+route.get('/admin/make-post', async (req, res) => {
+    const userPermission = await Admin.findOne({
+        name: req.session.login
+    });
+    if (req.session.login && userPermission.permissions.write == true) {
+        // take the categories from the database
+        const categories = await Categories.find({});
+        res.render('admin-post', {
+            login: req.session.login,
+            categories: categories.map(category => {
+                return {
+                    name: category.name,
+                }
+            })
+        });
+    } else {
+        res.redirect('/admin/login');
+    }
+});
+
+route.post('/admin/create-post', async (req, res) => {
+    const userPermission = await Admin.findOne({
+        name: req.session.login
+    });
+    if (req.session.login && userPermission.permissions.write == true) {
+        const { title, description, image, category, content } = req.body;
+        const slug = slugify(title, {
+            replacement: '_',
+            remove: /[*+~.()'"!:@]/g,
+            lower: true
+        });
+        PostsToReview.create({
+            title,
+            description,
+            image,
+            category,
+            content,
+            slug,
+            author: req.session.login,
+        });
+        res.redirect('/admin/make-post');
+    } else {
+        res.redirect('/admin/login');
+    }
+});
+    
 
 route.get('/admin/profile', (req, res) => {
     res.render('admin-profile');

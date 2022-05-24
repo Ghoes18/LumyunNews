@@ -1,49 +1,45 @@
 <%- include('partials/header-admin.ejs') %>
 
-<body>
-    <header>
-        <div class="center">
-            <div class="logo">
-                <i class="fa-solid fa-newspaper"></i>
-                <h2><a href="#">Lumyun<span style="font-weight: 300;">News</span></a></h2>
-            </div>
-            <div class="user-account">
-                <div class="user-account-info">
-                    <i class="fa-solid fa-user"></i>
-                    <span>Admin</span>
-                </div>
-                <div class="user-account-actions">
-                    <a href="logout">
-                        <i class="fa-solid fa-sign-out-alt"></i>
-                        <span>Sair</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
-    <div class="main">
-        <div class="welcome">
+    <body>
+        <header>
             <div class="center">
-                <h1>Bem vindo ao painel de administração</h1>
-                <p>Aqui você pode gerenciar todas as informações do site.</p>
-                <div class="day">
-                    <span>Hoje é dia</span>
-                    <h2>
-                        <span>
-                            <%= moment().format('DD') %><
-                        </span>
-                        <span>
-                            <%= moment().format('MMMM') %>
-                        </span>
-                        <span>
-                            <%= moment().format('YYYY') %>
-                        </span>
-                    </h2>
+                <div class="logo">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <h2><a href="/admin/login">Lumyun<span style="font-weight: 300;">News</span></a></h2>
+                </div>
+                <div class="user-account">
+                    <div class="user-account-info">
+                        <i class="fa-solid fa-user"></i>
+                        <span><%=login.split(' ')[0]%></span>
+                    </div>
+                    <div class="user-account-actions">
+                        <a href="logout">
+                            <i class="fa-solid fa-sign-out-alt"></i>
+                            <span>Sair</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <%- include('partials/navbar.ejs') %>
-</body>
+        </header>
+        <main>
+            <div class="welcome">
+                <div class="center">
+                    <div class="welcome-content">
+                        <h1>Bem vindo ao painel de administração</h1>
+                        <p>Aqui podes gerenciar todas as informações do website.</p>
+                    </div>
+                    <div class="day">
+                        <span>Hoje é dia</span>
+                        <h2>
+                            <span><%= moment().format('DD') %></span>
+                            <span><%= moment().format('MMMM').charAt(0).toUpperCase() + moment().format('MMMM').slice(1) %></span>
+                            <span><%= moment().format('YYYY') %></span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <%- include('partials/navbar.ejs') %>
+    </body>
 
-</html>
+    </html>

@@ -18,9 +18,11 @@
     "ejs": "^3.0.2",
     "express": "^4.17.2",
     "express-session": "^1.17.2",
+    "moment": "^2.29.3",
     "mongoose": "^6.2.4",
     "nodemailer": "^6.7.4",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "slugify": "^1.6.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

@@ -4,10 +4,10 @@ const { Schema } = mongoose;
 const adminSchema = new Schema({
     email: String,
     password: String,
-    categorys: [{
-        type: Array,
-        default: []
-    }],
+    permissions: {
+        write: Boolean,
+        review: Boolean,
+    },
     last_login: String,
     name: String,
 }, {collection: 'admin'});

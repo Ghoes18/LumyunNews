@@ -1,1 +1,58 @@
-<%- include('partials/header-admin.ejs.ejs') %>
+<%- include('partials/header-admin.ejs') %>
+<body>
+    <header>
+        <div class="center">
+            <div class="logo">
+                <i class="fa-solid fa-newspaper"></i>
+                <h2><a href="/admin/login">Lumyun<span style="font-weight: 300;">News</span></a></h2>
+            </div>
+            <div class="user-account">
+                <div class="user-account-info">
+                    <i class="fa-solid fa-user"></i>
+                    <span><%=login.split(' ')[0]%></span>
+                </div>
+                <div class="user-account-actions">
+                    <a href="logout">
+                        <i class="fa-solid fa-sign-out-alt"></i>
+                        <span>Sair</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="make-post-container">
+            <form method="post" action="/admin/create-post">
+                <p>
+                    <label for="title">Título:</label>
+                    <input type="text" name="title" id="title" placeholder="Título da notícia" required>
+                </p>
+                <p>
+                    <label for="description">Descrição:</label>
+                    <textarea name="description" id="description" placeholder="Descrição" required></textarea>
+                </p>
+                <p>
+                    <label for="image">Imagem:</label>
+                    <input type="text" name="image" id="image" placeholder="Link da Imagem" required>
+                </p>
+                <p>
+                    <label for="category">Categoria:</label>
+                    <select name="category" id="category" required>
+                        <option value="" hidden>Selecione uma categoria</option>
+                        <% for (var i = 0; i < categories.length; i++) { %>
+                            <option value="<%= categories[i].name %>"><%= categories[i].name %></option>
+                        <% } %> 
+                    </select>
+                </p>
+                <p>
+                    <label for="content">Conteúdo:</label>
+                    <textarea name="content" id="content" placeholder="Conteúdo" required></textarea>
+                </p>
+                <p>
+                    <button type="submit" name="create" value="create">Criar</button>
+                    <button type="submit" name="discard" value="discard">Descartar</button>
+                </p>
+            </form>
+        </div>
+    </main>
+</body>
