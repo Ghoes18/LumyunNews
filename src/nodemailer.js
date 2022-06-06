@@ -31,22 +31,20 @@ const sendEmailToAdmin = (emailOfUser, userName, hash) => {
 
 const sendEmailToUser = (emailOfUser, userName, password, state) => {
     let success = undefined;
-    const message = state ?
-        {
-            from: "noreply@lumyun.com",
-            to: emailOfUser,
-            subject: "Nova password",
-            text: `Olá ${userName}, aqui está a sua nova password: ${password}`,
-            html: `<p>Olá ${userName}, aqui está a sua nova password: ${password}</p>`,
-        } :
-        {
-            from: "noreply@lumyun.com",
-            to: emailOfUser,
-            subject: "Pedido de redefinição de password recusado",
-            text: `O seu pedido de redefinição de password foi recusado.`,
-            html: `<p>O seu pedido de redefinição de password foi recusado.</p>`,
-        };
-    
+    const message = state ? {
+        from: "noreply@lumyun.com",
+        to: emailOfUser,
+        subject: "Nova password",
+        text: `Olá ${userName}, aqui está a sua nova password: ${password}`,
+        html: `<p>Olá ${userName}, aqui está a sua nova password: ${password}</p>`,
+    } : {
+        from: "noreply@lumyun.com",
+        to: emailOfUser,
+        subject: "Pedido de redefinição de password recusado",
+        text: `O seu pedido de redefinição de password foi recusado.`,
+        html: `<p>O seu pedido de redefinição de password foi recusado.</p>`,
+    };
+
     try {
         transport.sendMail(message, (err) => {
             success = err ? false : true;
@@ -54,12 +52,33 @@ const sendEmailToUser = (emailOfUser, userName, password, state) => {
     } catch (err) {
         success = false;
     }
-    
+
     return success;
 };
+
+const sendEmailToAuthor = (emailOfAuthor, emailOfReviewer, nameOfReviewer, titleOfPost, content, link) => {
+    let success = undefined;
+    const message = {
+        from: emailOfReviewer,
+        to: emailOfAuthor,
+        subject: "Revisão da notícia",
+        text: `Ouve um pedido para alterar a notícia ${titleOfPost} (link: ${link}) pelo revisor ${nameOfReviewer}. O texto do pedido é:\n${content}`,
+        html: `<p>Ouve um pedido para alterar a notícia ${titleOfPost} (link: <a href="${link}">${link}</a>) pelo revisor ${nameOfReviewer}. O texto do pedido é:</p><p>${content}</p>`,
+    };
+
+    try {
+        transport.sendMail(message, (err) => {
+            success = err ? false : true;
+        });
+    } catch (err) {
+        success = false;
+    }
+}
+
 
 // export 2 functions
 module.exports = {
     sendEmailToAdmin,
     sendEmailToUser,
+    sendEmailToAuthor,
 };

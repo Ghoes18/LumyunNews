@@ -79,6 +79,54 @@ span {
     color: #e9d8a6;
 }
 
+.drop-down-menu-container {
+   display: inline-block;
+}
+
+.drop-down-menu-container .menu-text {
+    display: inline-block;
+    margin-right: 0.5em;
+    color: #e9d8a6;
+}
+
+.drop-down-menu-container .menu-text i {
+    margin-right: 0.3em;
+    color: #e9d8a6;
+}
+
+.drop-down-menu-container .menu-text button {
+    background-color: transparent;
+    border: none;
+    color: #e9d8a6;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.drop-down-menu-container .drop-down-menu-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    width: 20em;
+    padding: 0.5em;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 0.5em;
+    color: #000;
+   text-align: center;
+}
+
+.drop-down-menu-container .drop-down-menu-content p {
+    display: inline-block;
+    color: #000;
+    text-align: center;
+}
+
+.drop-down-menu-container .drop-down-menu-content span {
+    display: inline-block;
+    color: #000;
+    text-align: center;
+}
+
 /* Login Form */
 
 .login-form {
@@ -140,7 +188,7 @@ span {
     margin-bottom: 2em;
 }
 
-.login-form a > p{
+.login-form a>p {
     color: #044b5a;
     font-size: 0.8em;
     margin-top: 0.5em;
@@ -171,7 +219,7 @@ span {
     border-radius: 5px 5px 0 0;
 }
 
-.form-forget-password .top-form > h1 {
+.form-forget-password .top-form>h1 {
     font-size: 1.8em;
     color: #005f73;
 }
@@ -262,7 +310,7 @@ span {
     background-color: #044b5a;
 }
 
-.form-forget-password > #error-message {
+.form-forget-password>#error-message {
     padding: 0.5em;
 }
 
@@ -288,7 +336,7 @@ span {
     text-align: center;
 }
 
-.form-reset-password form .top-form > h1 {
+.form-reset-password form .top-form>h1 {
     font-size: 1.8em;
     color: #005f73;
 }
@@ -345,6 +393,7 @@ span {
 .form-reset-password form .bottom-form button#cancel:hover {
     background-color: #a20f0f;
 }
+
 /* Sidenav */
 
 .sidenav {
@@ -366,12 +415,12 @@ span {
     list-style-type: none;
 }
 
-.sidenav ul > li {
+.sidenav ul>li {
     margin-bottom: 1em;
     text-align: center;
 }
 
-.sidenav ul > li > a {
+.sidenav ul>li>a {
     color: #e9d8a6;
     text-decoration: none;
     display: block;
@@ -379,12 +428,12 @@ span {
     margin-bottom: 1.5em;
 }
 
-.sidenav ul > li > a > p {
+.sidenav ul>li>a>p {
     display: none;
     padding-left: 0.5em;
 }
 
-.sidenav ul > li > a > i {
+.sidenav ul>li>a>i {
     font-size: 1.3em;
     margin: 0 auto;
     margin-bottom: 0.5em;
@@ -394,11 +443,11 @@ span {
     width: 15%;
 }
 
-.sidenav:hover ul > li > a > p {
+.sidenav:hover ul>li>a>p {
     display: inline-block;
 }
 
-.sidenav ul > li > a > p:hover {
+.sidenav ul>li>a>p:hover {
     text-decoration: underline;
 }
 
@@ -439,12 +488,12 @@ main .welcome .day span {
     color: #000;
 }
 
-main .welcome .day h2 > span {
+main .welcome .day h2>span {
     font-size: 1.2em;
     color: #005f73;
 }
 
-/* Make a Post */
+/* Create a Post */
 
 main .make-post-container {
     width: 80%;
@@ -464,7 +513,7 @@ main .make-post-container form p > label {
     margin: 0.5em 0;
 }
 
-main .make-post-container form p > input {
+main .make-post-container form p>input {
     width: 40%;
     height: auto;
     margin: 0 auto;
@@ -474,7 +523,7 @@ main .make-post-container form p > input {
     color: #000;
 }
 
-main .make-post-container form p > textarea {
+main .make-post-container form p>textarea {
     width: 40%;
     height: auto;
     margin: 0 auto;
@@ -484,7 +533,7 @@ main .make-post-container form p > textarea {
     color: #000;
 }
 
-main .make-post-container form p > select {
+main .make-post-container form p>select {
     width: 40%;
     height: auto;
     margin: 0 auto;
@@ -494,7 +543,7 @@ main .make-post-container form p > select {
     color: #000;
 }
 
-main .make-post-container form p > button[type="submit"][name="create"] {
+main .make-post-container form p>button[type="submit"][name="create"] {
     background-color: #005f73;
     color: #e9d8a6;
     border: none;
@@ -508,7 +557,7 @@ main .make-post-container form p > button[type="submit"][name="create"] {
     margin-right: 2em;
 }
 
-main .make-post-container form p > button[type="submit"][name="discard"] {
+main .make-post-container form p>button[name="discard"] {
     background-color: #c41313;
     color: #e9d8a6;
     border: none;
@@ -522,5 +571,397 @@ main .make-post-container form p > button[type="submit"][name="discard"] {
 }
 
 main .make-post-container form p:last-child {
+    text-align: center;
+}
+
+/* Posts to Review */
+
+section.apresentation {
+    width: 100%;
+    height: auto;
+    margin: 8vh auto;
+    border-radius: 5px;
+    text-align: center;
+}
+
+section.apresentation>h1 {
+    font-size: 2.5em;
+    color: #005f73;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    text-decoration: underline;
+}
+
+main .posts-to-review {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+main .posts-to-review .box-last-single {
+    display: inline-block;
+    text-align: left;
+    width: 300px;
+    margin-right: 2%;
+    max-height: 400px;
+    background-color: #FFF;
+    padding-bottom: 20px;
+    height: 100%;
+    min-height: 540px;
+    border-radius: 10px;
+    margin-bottom: 2%;
+    box-shadow: 0px 0px 10px #000;
+}
+
+main .posts-to-review .box-last-single .image-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px 10px 0px 0px;
+}
+
+main .posts-to-review .box-last-single .image-container>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+main .posts-to-review .box-last-single h3 {
+    color: #001219;
+    font-size: 0.8rem;
+    margin: 20px 0;
+}
+
+main .posts-to-review .box-last-single h2 {
+    color: #303336;
+    font-size: 1.5rem;
+}
+
+main .posts-to-review .box-last-single .content-last-single {
+    padding: 20px;
+}
+
+main .posts-to-review .box-last-single .content-last-single>p {
+    color: #7B8591;
+    font-size: 1rem;
+    margin: 17px 0;
+}
+
+main .posts-to-review .box-last-single .content-last-single>a {
+    color: #001219;
+    font-size: 1rem;
+}
+
+/* Single Post */
+
+.new-single {
+    width: 100%;
+    height: auto;
+    margin: 15vh auto;
+    border-radius: 5px;
+}
+
+.new-single h1 {
+    font-size: 2.5em;
+    color: #005f73;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    text-decoration: underline;
+}
+
+.new-single .category p {
+    color: #000;
+}
+
+.new-single .category p>span {
+    color: #005f73;
+}
+
+.new-single .author span {
+    color: #000;
+}
+
+.new-single .image-container-single {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.new-single .image-container-single img {
+    width: 70%;
+    height: auto;
+    object-fit: cover;
+}
+
+.review-form {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 2em;
+    justify-content: center;
+    display: flex;
+}
+
+.review-form>form {
+    display: flex;
+}
+
+.review-form form>input,
+.review-form>button {
+    height: auto;
+    padding: .8em 8em;
+    margin-right: 1.7em;
+    border-radius: 0.3em;
+    border: 1px solid #bfc8ca;
+    color: #000;
+    display: inline;
+    cursor: pointer;
+}
+
+.review-form input:first-child {
+    background-color: #09f654;
+    color: #fff;
+}
+
+.review-form input:nth-child(2) {
+    background-color: #c41313;
+    color: #fff;
+}
+
+.review-form button {
+    background-color: #f6ee09;
+    color: #000;
+}
+
+.review-form input:first-child:hover {
+    background-color: #0ed44d;
+    color: #fff;
+}
+
+.review-form input:nth-child(2):hover {
+    background-color: #9b1111;
+    color: #fff;
+}
+
+.review-form button:hover {
+    background-color: #e2da03;
+    color: #000;
+}
+
+section.edit-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+}
+
+section.edit-modal .edit-modal-content {
+    width: 80vh;
+    height: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 2em;
+    box-shadow: 0px 0px 10px #000;
+}
+
+section.edit-modal .edit-modal-content .edit-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+section.edit-modal .edit-modal-content .edit-modal-header>h2 {
+    color: #005f73;
+    font-size: 2em;
+}
+
+section.edit-modal .edit-modal-content .edit-modal-header>span.close {
+    position: relative;
+    top: -1.2em;
+    right: -1.2em;
+    color: #001219;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+section.edit-modal .edit-modal-content .edit-modal-body h2 {
+    color: #001219;
+    font-size: 1.5rem;
+}
+
+section.edit-modal .edit-modal-content .edit-modal-body form {
+    justify-content: center;
+    align-items: center;
+}
+
+section.edit-modal .edit-modal-content .edit-modal-body form>textarea {
+    width: 80%;
+    height: auto;
+    padding: 1em;
+    margin-right: 1em;
+    border-radius: 0.3em;
+    border: 1px solid #bfc8ca;
+    color: #000;
+    display: block;
+    resize: none;
+}
+
+section.edit-modal .edit-modal-content .edit-modal-body form>input[type="submit"] {
+    background-color: #005f73;
+    font-size: 1em;
+    color: #e9d8a6;
+    padding: .8em;
+    margin-right: 1em;
+    border-radius: 0.3em;
+    border: none;
+    cursor: pointer;
+    display: block;
+    width: 40%;
+    margin: 2% auto;
+}
+
+section.edit-modal .edit-modal-content .edit-modal-body form>input[type="submit"]:hover {
+    background-color: #044b5a;
+    color: #e9d8a6;
+}
+
+/* Make a Post */
+
+.make-post-container {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.make-post-container .make-post {
+    width: 250px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px #000;
+    margin: 2%;
+}
+
+.make-post-container .make-post .image-container {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.make-post-container .make-post .image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.make-post-container .make-post .make-post-content {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.make-post-container .make-post .make-post-content h2 {
+    color: #001219;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+}
+
+.make-post-container .make-post .make-post-content a {
+    color: #001219;
+    font-size: .7;
+}
+
+/* Update Post */
+
+.update-post-container {
+    width: 80%;
+    height: auto;
+    margin: 15vh auto;
+    border-radius: 5px;
+}
+
+.update-post-container form {
+    width: 100%;
+}
+
+.update-post-container form p > label {
+    font-size: 1.2em;
+    color: #005f73;
+    display: block;
+    margin: 0.5em 0;
+}
+
+.update-post-container form p>input {
+    width: 40%;
+    height: auto;
+    margin: 0 auto;
+    padding: .8em;
+    border-radius: 0.3em;
+    border: 1px solid #bfc8ca;
+    color: #000;
+}
+
+.update-post-container form p>textarea {
+    width: 40%;
+    height: auto;
+    margin: 0 auto;
+    padding: .8em;
+    border-radius: 0.3em;
+    border: 1px solid #bfc8ca;
+    color: #000;
+}
+
+.update-post-container form p>select {
+    width: 40%;
+    height: auto;
+    margin: 0 auto;
+    padding: .8em;
+    border-radius: 0.3em;
+    border: 1px solid #bfc8ca;
+    color: #000;
+}
+
+.update-post-container form p>button[type="submit"][id="create"] {
+    background-color: #005f73;
+    color: #e9d8a6;
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
+    margin-bottom: 2em;
+    margin: 0 auto;
+    margin-top: 1.8em;
+    width: 35%;
+    padding: 1em;
+    margin-right: 2em;
+}
+
+.update-post-container form p>button[id="delete"] {
+    background-color: #c41313;
+    color: #e9d8a6;
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
+    margin-bottom: 2em;
+    margin: 0 auto;
+    margin-top: 1.8em;
+    padding: 1em;
+    width: 35%;
+}
+
+.update-post-container form p:last-child {
     text-align: center;
 }

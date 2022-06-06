@@ -20,27 +20,29 @@
             </div>
         </div>
     </header>
+    <section class="apresentation">
+        <h1>Posts Para Revisão</h1>
+    </section>
     <main>
         <div class="center">
-            <div class="make-post-container">
-                <div class="make-post">
-                    <div class="image-container">
-                        <img src="../../public/images/create.png"/>
-                    </div>
-                    <div class="make-post-content">
-                        <h2>Crie uma notícia</h2>
-                        <a href="/admin/make-post/new">Criar noticia</a>
-                    </div>
-                </div>
+            <div class="posts-to-review">
+                <% let counter = 0 %>
                 <% for(let i = 0; i < posts.length; i++) { %>
-                    <div class="make-post">
+                    <div class="box-last-single">
                         <div class="image-container">
-                            <img src="<%=posts[i].image%>"/>
+                            <img src="<%= posts[i].image %>">
                         </div>
-                        <div class="make-post-content">
-                            <h2>Editar noticia</h2>
-                            <h3><%=posts[i].title%></h3>
-                            <a href="/admin/make-post/<%=posts[i].slug%>">Editar noticia</a>
+                        <div class="content-last-single">
+                            <h3>
+                                <%= posts[i].category %>
+                            </h3>
+                            <h2>
+                                <%= posts[i].title %>
+                            </h2>
+                            <p>
+                                <%= posts[i].description %>
+                            </p>
+                            <a href="<%= posts[i].slug %>">VER NOTICIA</a>
                         </div>
                     </div>
                 <% } %>

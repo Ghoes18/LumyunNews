@@ -1,0 +1,92 @@
+<%- include('partials/header-admin.ejs') %>
+<body>
+    <header>
+        <div class="center">
+            <div class="logo">
+                <i class="fa-solid fa-newspaper"></i>
+                <h2><a href="/admin/login">Lumyun<span style="font-weight: 300;">News</span></a></h2>
+            </div>
+            <div class="user-account">
+                <div class="drop-down-menu-container">
+                    <div class="menu-text">
+                        <i class="fa-solid fa-pen"></i>
+                        <button>Alterações</button>
+                    </div>
+                    <div class="drop-down-menu-content">
+                        <p>
+                            <% if(post.toChange.reason) { %>
+                                <span>Pedido:</span>
+                                <%- post.toChange.reason %>
+                            <% } else { %>
+                                <span>Nenhum pedido de alteração</span>
+                            <% } %>
+                        </p>
+                    </div>
+                </div>
+                <div class="user-account-info">
+                    <i class="fa-solid fa-user"></i>
+                    <span><%=login.split(' ')[0]%></span>
+                </div>
+                <div class="user-account-actions">
+                    <a href="logout">
+                        <i class="fa-solid fa-sign-out-alt"></i>
+                        <span>Sair</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="update-post-container">
+            <form method="post">
+                <p>
+                    <label for="title">Título:</label>
+                    <input type="text" name="title" id="title" placeholder="Título da notícia" required value="<%- post.title %>">
+                </p>
+                <p>
+                    <label for="description">Descrição:</label>
+                    <textarea name="description" id="description" placeholder="Descrição" required><%- post.description %></textarea>
+                </p>
+                <p>
+                    <img src="<%- post.image %>"/>
+                    <label for="image">Imagem:</label>
+                    <input type="text" name="image" id="image" placeholder="Link da Imagem" required value="<%- post.image %>">
+                </p>
+                <p>
+                    <label for="category">Categoria:</label>
+                    <select name="category" id="category" required>
+                        <option value="<%- post.category %>"><%- post.category %></option>
+                        <% for (var i = 0; i < categories.length; i++) { %>
+                            <option value="<%= categories[i].name %>"><%= categories[i].name %></option>
+                        <% } %> 
+                    </select>
+                </p>
+                <p>
+                    <label for="content">Conteúdo do primeiro parágrafo:</label>
+                    <textarea name="content" id="content" placeholder="Conteúdo" required><%- p %></textarea>
+                </p>
+                <p>
+                    <label for="sub-title">Subtítulo (Opcional):</label>
+                    <input type="text" name="subtitle" id="sub-title" placeholder="Subtítulo da notícia" value="<%- h2 %>">
+                </p>
+                <p>
+                    <label for="sub-content">Conteúdo do segundo parágrafo (Opcional):</label>
+                    <textarea name="subcontent" id="sub-content" placeholder="Conteúdo"><%- secondP %></textarea>
+                </p>
+                <p>
+                    <button type="submit" id="create" name="submit" value="update">Atualizar</button>
+                    <button type="submit" id="delete" name="submit" value="delete">Eliminar</button>
+                </p>
+            </form>
+        </div>
+    </main>
+    <script>
+        const dropDownMenu = document.querySelector('.drop-down-menu-container');
+        const dropDownMenuContent = document.querySelector('.drop-down-menu-content');
+        dropDownMenu.addEventListener('mouseover', function() {
+            dropDownMenuContent.style.display =  'block';
+        });
+        dropDownMenu.addEventListener('mouseout', function() {
+            dropDownMenuContent.style.display = 'none';
+        });
+    </script>
+</body>

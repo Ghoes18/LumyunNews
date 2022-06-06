@@ -9,6 +9,13 @@ const postsToReviewSchema = new Schema({
     description: String,
     slug: String,
     author: String,
+    toChange: {
+        needToChange: {
+            type: Boolean,
+            default: false,
+        },
+        reason: String,
+    }
 }, {collection: 'posts-to-review'});
 
 module.exports = mongoose.model('PostsToReview', postsToReviewSchema);

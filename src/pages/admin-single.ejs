@@ -1,0 +1,76 @@
+<%- include('partials/header-admin.ejs') %>
+<body>
+    <header>
+        <div class="center">
+            <div class="logo">
+                <i class="fa-solid fa-newspaper"></i>
+                <h2><a href="/admin/login">Lumyun<span style="font-weight: 300;">News</span></a></h2>
+            </div>
+            <div class="user-account">
+                <div class="user-account-info">
+                    <i class="fa-solid fa-user"></i>
+                    <span><%=login.split(' ')[0]%></span>
+                </div>
+                <div class="user-account-actions">
+                    <a href="logout">
+                        <i class="fa-solid fa-sign-out-alt"></i>
+                        <span>Sair</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="center">
+            <div class="new-single">
+                <h1>
+                    <%= post.title %>
+                </h1>
+                <div class="category">
+                    <p><span>categoria:</span> <%= post.category %> </p>
+                </div>
+                <div class="author">
+                    <i class="fa-solid fa-user"></i>
+                    <span>POR <%= post.author %></span>
+                </div>
+                <div class="image-container-single">
+                    <img src="<%= post.image %>">
+                </div>
+                <%- post.content %>
+            </div>
+            <div class="review-form">
+                <form method="post">
+                    <input type="submit" name="decision" value="Publicar"/>
+                    <input type="submit" name="decision" value="Remover"/>
+                </form>
+                <button onclick="openEditModal()">Editar</button>
+            </div>
+        </div>
+    </main>
+    <section class="edit-modal">
+        <div class="center">
+            <div class="edit-modal-content">
+                <div class="edit-modal-header">
+                    <h2>Editar Post</h2>
+                    <span class="close" onclick="closeEditModal()">&times;</span>
+                </div>
+                <div class="edit-modal-body">
+                    <h2>Enviar Email para o autor</h2>
+                    <form method="post">
+                        <textarea name="emailContent" id="email-content" cols="30" rows="10" placeholder="Escreva as alterações que o funcionário que fez esta noticia deve fazer..."></textarea>
+                        <input type="submit" name="decision" value="Enviar"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function openEditModal() {
+            document.getElementsByClassName("edit-modal")[0].style.display = "flex";
+        }
+
+        function closeEditModal() {
+            document.getElementsByClassName("edit-modal")[0].style.display = "none";
+        }
+    </script>
+</body>
