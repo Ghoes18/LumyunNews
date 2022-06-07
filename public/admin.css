@@ -965,3 +965,516 @@ section.edit-modal .edit-modal-content .edit-modal-body form>input[type="submit"
 .update-post-container form p:last-child {
     text-align: center;
 }
+
+/* Employees List */
+
+.employees-list {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.employees-list .employees-list-header {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.employees-list .employees-list-header > h2 {
+    color: #005f73;
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+}
+
+.employees-list .employees-list-content > button {
+    background-color: #005f73;
+    color: #e9d8a6;
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
+    margin-bottom: 2em;
+    margin: 0 auto;
+    margin-top: 1.8em;
+    width: 35%;
+    padding: 1em;
+    margin-right: 2em;
+    display: block;
+    margin: 0 auto;
+}
+
+.employees-list .employees-list-content > button:hover {
+    background-color: #044b5a;
+}
+
+.employees-list .employees-list-content > table {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.employees-list .employees-list-content > table > thead {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.employees-list .employees-list-content > table > thead > tr {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .5em;
+}
+
+.employees-list .employees-list-content > table > thead > tr > th {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 2em;
+    color: #005f73;
+    font-size: 1.2rem;
+}
+
+.employees-list .employees-list-content > table > tbody {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.employees-list .employees-list-content > table > tbody > tr {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.employees-list .employees-list-content > table > tbody > tr > td {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .5em;
+    color: #000;
+    font-size: 1.2rem;
+}
+
+.employees-list .employees-list-content > table > tbody > tr > td > a {
+    color: #005f73;
+    font-size: 1.2rem;
+    text-decoration: none;
+    margin-right: .2em
+}
+
+.employees-list .employees-list-content > table > tbody > tr > td > a:hover {
+    color: #044b5a;
+}
+
+.employees-list .employees-list-content > table > tbody > tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.employees-list .employees-list-content > table > tbody > tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.employees-list .employees-list-content > table > tbody > tr:hover {
+    background-color: #f2f2f2;
+}
+
+.employees-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+}
+
+.employees-modal .modal-content {
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+    padding: 2em;
+    background-color: #fff;
+    border-radius: 0.3em;
+}
+
+.employees-modal .modal-content .modal-header {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .6em;
+}
+
+.employees-modal .modal-content .modal-header > h2 {
+    color: #005f73;
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+}
+
+.employees-modal .modal-content .modal-body {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.employees-modal .modal-content .modal-body > form {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.employees-modal .modal-content .modal-body > form .form-group {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+}
+
+.employees-modal .modal-content .modal-body > form .form-group > label {
+    color: #005f73;
+    font-size: 1.2rem;
+    margin-bottom: .5em;
+}
+
+.employees-modal .modal-content .modal-body > form .form-group > input {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+    border-radius: 0.3em;
+    border: none;
+    background-color: #f2f2f2;
+}
+
+.employees-modal .modal-content .modal-body > form .form-group > input:focus {
+    outline: none;
+}
+
+.employees-modal .modal-content .modal-body > form .form-group > input:hover {
+    background-color: #f2f2f2;
+}
+
+.employees-modal .modal-content .modal-body > form .form-group .permissions {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+    border-radius: 0.3em;
+    border: none;
+    background-color: #f2f2f2;
+}
+
+.employees-modal .modal-content .modal-body > form .form-group .permissions .permissions-item {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+    border-radius: 0.3em;
+    border: none;
+    background-color: #f2f2f2;
+}
+
+.employees-modal .modal-content .modal-body > form .form-group .permissions .permissions-item > input[type="checkbox"] {
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+    border-radius: 0.3em;
+    border: none;
+    background-color: #f2f2f2;
+}
+
+.employees-modal .modal-content .modal-body > form .form-group .permissions .permissions-item > input[type="checkbox"]:focus {
+    outline: none;
+}
+
+.employees-modal .modal-content .modal-body > form .btn-add-modal > button {
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+    border-radius: 0.3em;
+    border: none;
+    background-color: #005f73;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: block;
+    margin: 1em auto;
+}
+
+.employees-modal .modal-content .modal-body .btn-close-modal > button {
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+    border-radius: 0.3em;
+    border: none;
+    background-color: #be1b1b;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+.employees-modal .modal-content .modal-body > form .btn-add-modal > button:hover {
+    background-color: #044b5a;
+}
+
+.employees-modal .modal-content .modal-body .btn-close-modal > button:hover {
+    background-color: #8c1b1b;
+}
+
+.modal-email-already-exist {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-email-already-exist .modal-content {
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+    padding: 2em;
+    background-color: #fff;
+    border-radius: 0.3em;
+}
+
+.modal-email-already-exist .modal-content .modal-header {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .6em;
+}
+
+.modal-email-already-exist .modal-content .modal-header > h2 {
+    color: #005f73;
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+}
+
+.modal-email-already-exist .modal-content .modal-body {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.modal-email-already-exist .modal-content .modal-body > p {
+    color: #000;
+    font-size: 1.2rem;
+    margin-bottom: 1em;
+}
+
+.modal-email-already-exist .modal-content .modal-body > button {
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+    border-radius: 0.3em;
+    border: none;
+    background-color: #005f73;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: block;
+    margin: 1em auto;
+}
+
+.modal-email-already-exist .modal-content .modal-body > button:hover {
+    background-color: #044b5a;
+}
+
+/* Edit Employee */
+
+.employees-edit-form {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+}
+
+.employees-edit-form .employees-edit-form-header {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+}
+
+.employees-edit-form .employees-edit-form-header > h2 {
+    color: #005f73;
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+}
+
+.employees-edit-form .employees-edit-form-content {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+}
+
+.employees-edit-form .employees-edit-form-content > form {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+}
+
+.employees-edit-form .employees-edit-form-content > form .form-group {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+}
+
+.employees-edit-form .employees-edit-form-content > form .form-group > label {
+    color: #005f73;
+    font-size: 1.2rem;
+    margin-bottom: .4em;
+}
+
+.employees-edit-form .employees-edit-form-content > form .form-group > input {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+    border-radius: 0.3em;
+    border: none;
+    background-color: #f2f2f2;
+}
+
+.employees-edit-form .employees-edit-form-content > form .form-group > input[type="submit"] {
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+    border-radius: 0.3em;
+    border: none;
+    background-color: #005f73;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: block;
+    margin: 1em auto;
+}
+
+/* Admin Profile */
+
+.user-profile {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+}
+
+.user-profile .user-profile-header {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+}
+
+.user-profile .user-profile-header > h2 {
+    color: #005f73;
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+}
+
+.user-profile .user-profile-content {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+}
+
+.user-profile .user-profile-content > form {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+}
+
+.user-profile .user-profile-content > form .user-profile-content-info {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+}
+
+.user-profile .user-profile-content > form .user-profile-content-info-item {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+}
+
+.user-profile .user-profile-content > form .user-profile-content-info-item > label {
+    color: #005f73;
+    font-size: 1.2rem;
+    margin-bottom: .4em;
+}
+
+.user-profile .user-profile-content > form .user-profile-content-info-item > input {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+    border-radius: 0.3em;
+    border: none;
+    background-color: #f2f2f2;
+}
+
+.user-profile .user-profile-content > form .user-profile-content-actions {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+}
+
+.user-profile .user-profile-content > form .user-profile-content-actions > button {
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+    padding: .4em;
+    border-radius: 0.3em;
+    border: none;
+    background-color: #005f73;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: block;
+    margin: 1em auto;
+}
+
+.user-profile .user-profile-content > form .user-profile-content-actions > button:hover {
+    background-color: #044b5a;
+}
+
+#password-not-match {
+    border: 1px solid #f00;
+}
+
+.error-message {
+    display: none;
+    color: #f00;
+    font-size: 1.2rem;
+    margin-bottom: 1em;
+}

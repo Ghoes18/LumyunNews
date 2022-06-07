@@ -7,6 +7,7 @@ const adminSchema = new Schema({
     permissions: {
         write: Boolean,
         review: Boolean,
+        admin: Boolean,
     },
     last_login: String,
     name: String,

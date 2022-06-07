@@ -1,0 +1,70 @@
+<%- include('partials/header-admin.ejs') %>
+<body>
+    <header>
+        <div class="center">
+            <div class="logo">
+                <i class="fa-solid fa-newspaper"></i>
+                <h2><a href="/admin/login">Lumyun<span style="font-weight: 300;">News</span></a></h2>
+            </div>
+            <div class="user-account">
+                <div class="user-account-info">
+                    <i class="fa-solid fa-user"></i>
+                    <a href="/admin/profile"><span><%=login.split(' ')[0]%></span></a>
+                </div>
+                <div class="user-account-actions">
+                    <a href="logout">
+                        <i class="fa-solid fa-sign-out-alt"></i>
+                        <span>Sair</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="center">
+            <div class="user-profile">
+                <div class="user-profile-header">
+                    <h2>Perfil de <span><%=login.split(' ')[0]%></span></h2>
+                </div>
+                <div class="user-profile-content">
+                    <form method="POST">
+                        <div class="user-profile-content-info">
+                            <div class="user-profile-content-info-item">
+                                <label for="name">Nome</label>
+                                <input type="text" name="name" id="name" value="<%=user.name%>" required>
+                            </div>
+                            <div class="user-profile-content-info-item">
+                                <label for="email">E-mail</label>
+                                <input type="email" name="email" id="email" value="<%=user.email%>" readonly>
+                            </div>
+                            <div class="user-profile-content-info-item">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="password" required>
+                            </div>
+                            <div class="user-profile-content-info-item">
+                                <label for="password_confirmation">Confirmar Senha</label>
+                                <input type="password" name="password_confirmation" id="password_confirmation" required>
+                            </div>
+                        </div>
+                        <div class="error-message">
+                            <p>As passwords não coincidem</p>
+                        </div>
+                        <div class="user-profile-content-actions">
+                            <button type="submit">Atualizar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <%- include('partials/navbar.ejs') %>
+    <script>
+        // Verify if in url have error=password
+        if(window.location.href.indexOf('error=password') > -1) {
+            document.querySelector('.error-message').style.display = 'block';
+            // put #password-not-match in password inputs
+            document.querySelector('#password').id = 'password-not-match';
+            document.querySelector('#password_confirmation').id = 'password-not-match';
+        }
+    </script>
+</body>

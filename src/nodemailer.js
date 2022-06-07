@@ -73,12 +73,32 @@ const sendEmailToAuthor = (emailOfAuthor, emailOfReviewer, nameOfReviewer, title
     } catch (err) {
         success = false;
     }
-}
+};
 
+const welcomeEmail = (emailOfUser, userName,  password) => {
+    let success = undefined;
+    const message = {
+        from: "noreply@lumyun.com",
+        to: emailOfUser,
+        subject: "Bem-vindo à Lumyun",
+        text: `Seja bem-vindo(a) à Lumyun, ${userName}. Aqui está a sua password: ${password} para entrar na plataforma: http://localhost:3000/login`,
+        html: `<p>Seja bem-vindo(a) à Lumyun, ${userName}. Aqui está a sua password: ${password} para entrar na plataforma: <a href="http://localhost:3000/login">http://localhost:3000/login</a></p>`,
+    };
+
+    try {
+        transport.sendMail(message, (err) => {
+            success = err ? false : true;
+        });
+    }
+    catch (err) {
+        success = false;
+    }
+};
 
 // export 2 functions
 module.exports = {
     sendEmailToAdmin,
     sendEmailToUser,
     sendEmailToAuthor,
+    welcomeEmail,
 };

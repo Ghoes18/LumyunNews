@@ -1,0 +1,89 @@
+<%- include('partials/header-admin.ejs') %>
+<body>
+    <header>
+        <div class="center">
+            <div class="logo">
+                <i class="fa-solid fa-newspaper"></i>
+                <h2><a href="/admin/login">Lumyun<span style="font-weight: 300;">News</span></a></h2>
+            </div>
+            <div class="user-account">
+                <div class="user-account-info">
+                    <i class="fa-solid fa-user"></i>
+                    <a href="/admin/profile"><span><%=login.split(' ')[0]%></span></a>
+                </div>
+                <div class="user-account-actions">
+                    <a href="logout">
+                        <i class="fa-solid fa-sign-out-alt"></i>
+                        <span>Sair</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="center">
+            <div class="employees-edit-form">
+                <div class="employees-edit-form-header">
+                    <h2>Editar Funcionário</h2>
+                </div>
+                <div class="employees-edit-form-content">
+                    <form method="POST">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" name="name" id="name" value="<%- employee.name %>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" name="email" id="email" value="<%- employee.email %>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="permissions">Permissões</label>
+                            <div class="permissions">
+                                <div class="permissions-item">
+                                    <input type="checkbox" name="permissionsAdmin" id="permissions-admin" value="true" <%- employee.permissions.admin ? 'checked' : '' %>>
+                                    <label for="permissions-admin">Administrador</label>
+                                </div>
+                                <div class="permissions-item">
+                                    <input type="checkbox" name="permissionsReview" id="permissions-review" value="true" <%- employee.permissions.review ? 'checked' : '' %>>
+                                    <label for="permissions-review">Revisor</label>
+                                </div>
+                                <div class="permissions-item">
+                                    <input type="checkbox" name="permissionsWrite" id="permissions-write" value="true" <%- employee.permissions.write ? 'checked' : '' %>>
+                                    <label for="permissions-writer">Escritor</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Atualizar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <section class="modal-email-already-exist">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>E-mail já existe</h2>
+            </div>
+            <div class="modal-body">
+                <p>O e-mail para o funcionário que tentou atualizar já existe no sistema.</p>
+                <button onclick="closeEmailAlreadyExistModal()">Fechar</button>
+            </div>
+        </div>
+    </section>
+    <%- include('partials/navbar.ejs') %>
+    <script>
+        if(window.location.href.indexOf('error=email') > -1) {
+            openEmailAlreadyExistModal();
+        }
+
+        function openEmailAlreadyExistModal() {
+            document.querySelector('.modal-email-already-exist').style.display = 'block';
+        }
+
+        function closeEmailAlreadyExistModal() {
+            document.querySelector('.modal-email-already-exist').style.display = 'none';
+        }
+    </script>
+</body>

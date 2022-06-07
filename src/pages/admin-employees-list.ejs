@@ -1,0 +1,151 @@
+<%- include('partials/header-admin.ejs') %>
+<body>
+    <header>
+        <div class="center">
+            <div class="logo">
+                <i class="fa-solid fa-newspaper"></i>
+                <h2><a href="/admin/login">Lumyun<span style="font-weight: 300;">News</span></a></h2>
+            </div>
+            <div class="user-account">
+                <div class="user-account-info">
+                    <i class="fa-solid fa-user"></i>
+                    <a href="/admin/profile"><span><%=login.split(' ')[0]%></span></a>
+                </div>
+                <div class="user-account-actions">
+                    <a href="logout">
+                        <i class="fa-solid fa-sign-out-alt"></i>
+                        <span>Sair</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="center">
+            <div class="employees-list">
+                <div class="employees-list-header">
+                    <h2>Lista de Funcionários</h2>
+                </div>
+                <div class="employees-list-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>E-mail</th>
+                                <th>Função</th>
+                                <th>Último Acesso</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (let i = 0; i < employees.length; i++) { %>
+                                <tr>
+                                    <td><%- employees[i].name %></td>
+                                    <td><%- employees[i].email %></td>
+                                    <% if (employees[i].permissions.admin) { %>
+                                        <td>Administrador</td>
+                                    <% } else if (employees[i].permissions.write && employees[i].permissions.review) { %>
+                                        <td>Escritor e Revisor</td>
+                                    <% } else if (employees[i].permissions.review) { %>
+                                        <td>Revisor</td>
+                                    <% } else if (employees[i].permissions.write) { %>
+                                        <td>Escritor</td>
+                                    <% } else { %>
+                                        <td>Nenhuma permissão</td>
+                                    <% } %>
+                                    <td><%- employees[i].last_login %></td>
+                                    <td>
+                                        <a href="/admin/employees/<%- employees[i]._id %>/edit">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
+                                        <a href="/admin/employees/<%- employees[i]._id %>/delete">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                    <button class="add-employee" onclick="openEmployeesModal()">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>Adicionar Funcionário</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <section class="employees-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Adicionar Funcionário</h2>
+            </div>
+            <div class="modal-body">
+                <form action="/admin/employees/add" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="permissions">Permissões</label>
+                        <div class="permissions">
+                            <div class="permissions-item">
+                                <input type="checkbox" name="permissionsAdmin" id="permissionsAdmin">
+                                <label for="permissionsAdmin">Administrador</label>
+                            </div>
+                            <div class="permissions-item">
+                                <input type="checkbox" name="permissionsWrite" id="permissionsWrite">
+                                <label for="permissionsWrite">Escritor</label>
+                            </div>
+                            <div class="permissions-item">
+                                <input type="checkbox" name="permissionsReview" id="permissionsReview">
+                                <label for="permissionsReview">Revisor</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-add-modal">
+                        <button type="submit">Adicionar</button>
+                    </div>
+                </form>
+                <div class="btn-close-modal"><button onclick="closeEmployeesModal()">Fechar</button></div>
+            </div>
+        </div>
+    </section>
+    <section class="modal-email-already-exist">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>E-mail já existe</h2>
+            </div>
+            <div class="modal-body">
+                <p>O e-mail para o funcionário que tentou criar já existe no sistema.</p>
+                <button onclick="closeEmailAlreadyExistModal()">Fechar</button>
+            </div>
+        </div>
+    </section>
+    <%- include('partials/navbar.ejs') %>
+    <script>
+        // Check in url if there is a error=email
+        if (window.location.href.indexOf('error=email') > -1) {
+            openEmailAlreadyExistModal();
+        }
+
+        function openEmailAlreadyExistModal() {
+            document.querySelector('.modal-email-already-exist').style.display = 'flex';
+        }
+
+        function closeEmailAlreadyExistModal() {
+            document.querySelector('.modal-email-already-exist').style.display = 'none';
+        }
+
+        function openEmployeesModal() {
+            document.querySelector('.employees-modal').style.display = 'flex';
+        }
+
+        function closeEmployeesModal() {
+            document.querySelector('.employees-modal').style.display = 'none';
+        }
+    </script>
+</body>
