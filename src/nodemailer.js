@@ -56,14 +56,23 @@ const sendEmailToUser = (emailOfUser, userName, password, state) => {
     return success;
 };
 
-const sendEmailToAuthor = (emailOfAuthor, emailOfReviewer, nameOfReviewer, titleOfPost, content, link) => {
+const sendEmailToAuthor = (
+    emailOfAuthor,
+    emailOfReviewer,
+    nameOfReviewer,
+    titleOfPost,
+    content,
+    link
+) => {
     let success = undefined;
     const message = {
         from: emailOfReviewer,
         to: emailOfAuthor,
         subject: "Revisão da notícia",
-        text: `Ouve um pedido para alterar a notícia ${titleOfPost} (link: ${link}) pelo revisor ${nameOfReviewer}. O texto do pedido é:\n${content}`,
-        html: `<p>Ouve um pedido para alterar a notícia ${titleOfPost} (link: <a href="${link}">${link}</a>) pelo revisor ${nameOfReviewer}. O texto do pedido é:</p><p>${content}</p>`,
+        text: `Ouve um pedido para alterar a notícia ${titleOfPost} (link: ${link})
+         pelo revisor ${nameOfReviewer}. O texto do pedido é:\n${content}`,
+        html: `<p>Ouve um pedido para alterar a notícia ${titleOfPost} (link: <a href="${link}">${link}</a>)
+         pelo revisor ${nameOfReviewer}. O texto do pedido é:</p><p>${content}</p>`,
     };
 
     try {
@@ -75,7 +84,7 @@ const sendEmailToAuthor = (emailOfAuthor, emailOfReviewer, nameOfReviewer, title
     }
 };
 
-const welcomeEmail = (emailOfUser, userName,  password) => {
+const welcomeEmail = (emailOfUser, userName, password) => {
     let success = undefined;
     const message = {
         from: "noreply@lumyun.com",
@@ -89,8 +98,7 @@ const welcomeEmail = (emailOfUser, userName,  password) => {
         transport.sendMail(message, (err) => {
             success = err ? false : true;
         });
-    }
-    catch (err) {
+    } catch (err) {
         success = false;
     }
 };

@@ -1072,11 +1072,7 @@ section.edit-modal .edit-modal-content .edit-modal-body form>input[type="submit"
     color: #044b5a;
 }
 
-.employees-list .employees-list-content > table > tbody > tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.employees-list .employees-list-content > table > tbody > tr:nth-child(odd) {
+.employees-list .employees-list-content > table > tbody > tr {
     background-color: #fff;
 }
 

@@ -9,7 +9,7 @@
             <div class="user-account">
                 <div class="user-account-info">
                     <i class="fa-solid fa-user"></i>
-                    <a href="/admin/profile"><span><%=login.split(' ')[0]%></span></a>
+                    <a href="/admin/profile" title="Perfil"><span><%=login.split(' ')[0]%></span></a>
                 </div>
                 <div class="user-account-actions">
                     <a href="logout">
@@ -31,7 +31,7 @@
                         <div class="user-profile-content-info">
                             <div class="user-profile-content-info-item">
                                 <label for="name">Nome</label>
-                                <input type="text" name="name" id="name" value="<%=user.name%>" required>
+                                <input type="text" name="name" id="name" value="<%=user.name%>">
                             </div>
                             <div class="user-profile-content-info-item">
                                 <label for="email">E-mail</label>
@@ -39,11 +39,11 @@
                             </div>
                             <div class="user-profile-content-info-item">
                                 <label for="password">Password</label>
-                                <input type="password" name="password" id="password" required>
+                                <input type="password" name="password" id="password">
                             </div>
                             <div class="user-profile-content-info-item">
                                 <label for="password_confirmation">Confirmar Senha</label>
-                                <input type="password" name="password_confirmation" id="password_confirmation" required>
+                                <input type="password" name="password_confirmation" id="password_confirmation" >
                             </div>
                         </div>
                         <div class="error-message">

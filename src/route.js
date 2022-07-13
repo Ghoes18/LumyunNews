@@ -309,35 +309,6 @@ route.get("/admin/make-post/new", async (req, res) => {
     }
 });
 
-route.get("/admin/make-post/reviews/:slug", async (req, res) => {
-    const userPermission = await Admin.findOne({
-        name: req.session.login,
-    });
-    if (req.session.login && userPermission.permissions.write == true) {
-        const categories = await Categories.find({});
-        const post = await PostsToReview.findOne({
-            slug: `reviews/${req.params.slug}`,
-        });
-        let p = post.content.match(/<p>.*<\/p><h2>/g);
-        let h2 = post.content.match(/<h2>.*<\/h2>/g);
-        let secondP = post.content.match(/<\/h2><p>.*<\/p>/g);
-        // remove the html tags from the strings
-        p = p.toString().replace(/(<([^>]+)>)/gi, "");
-        h2 = h2.toString().replace(/(<([^>]+)>)/gi, "");
-        secondP = secondP.toString().replace(/(<([^>]+)>)/gi, "");
-        res.render("admin-edit-post", {
-            login: req.session.login,
-            categories,
-            post,
-            h2,
-            p,
-            secondP,
-        });
-    } else {
-        res.redirect("/admin/login");
-    }
-});
-
 route.post("/admin/create-post", async (req, res) => {
     const userPermission = await Admin.findOne({
         name: req.session.login,
@@ -373,6 +344,35 @@ route.post("/admin/create-post", async (req, res) => {
         });
 
         res.redirect("/admin/make-post");
+    } else {
+        res.redirect("/admin/login");
+    }
+});
+
+route.get("/admin/make-post/reviews/:slug", async (req, res) => {
+    const userPermission = await Admin.findOne({
+        name: req.session.login,
+    });
+    if (req.session.login && userPermission.permissions.write == true) {
+        const categories = await Categories.find({});
+        const post = await PostsToReview.findOne({
+            slug: `reviews/${req.params.slug}`,
+        });
+        let p = post.content.match(/<p>.*<\/p><h2>/g);
+        let h2 = post.content.match(/<h2>.*<\/h2>/g);
+        let secondP = post.content.match(/<\/h2><p>.*<\/p>/g);
+        // remove the html tags from the strings
+        p = p.toString().replace(/(<([^>]+)>)/gi, "");
+        h2 = h2.toString().replace(/(<([^>]+)>)/gi, "");
+        secondP = secondP.toString().replace(/(<([^>]+)>)/gi, "");
+        res.render("admin-edit-post", {
+            login: req.session.login,
+            categories,
+            post,
+            h2,
+            p,
+            secondP,
+        });
     } else {
         res.redirect("/admin/login");
     }
@@ -440,22 +440,10 @@ route.get("/admin/reviews", async (req, res) => {
         name: req.session.login,
     });
     if (req.session.login && userPermission.permissions.review == true) {
-        const posts = await PostsToReview.find({
-            toChange: {
-                needToChange: false,
-                reason: "",
-            },
-        }).then((posts) => {
-            return posts.map((post) => {
-                return {
-                    title: post.title,
-                    description: post.description,
-                    image: post.image,
-                    category: post.category,
-                    content: post.content,
-                    slug: post.slug,
-                    author: post.author,
-                };
+        const posts = await PostsToReview.find({}).then((posts) => {
+            // only posts that dont need to be changed
+            return posts.filter((post) => {
+                return post.toChange.needToChange == false;
             });
         });
         res.render("admin-review", {
@@ -602,14 +590,14 @@ route.post("/admin/employees/add", async (req, res) => {
             permissionsAdmin,
         } = req.body;
 
-        permissionsWrite = permissionsAdmin == "on";
-        permissionsReview = permissionsReview == "on";
-        if (permissionsAdmin != "on") {
-            permissionsAdmin = false;
-        } else {
+        permissionsWrite = permissionsWrite == "on" || permissionsWrite == "true";
+        permissionsReview = permissionsReview == "on" || permissionsReview == "true";
+        if (permissionsAdmin == "on" || permissionsAdmin == "true") {
             permissionsAdmin = true;
             permissionsWrite = true;
             permissionsReview = true;
+        } else {
+            permissionsAdmin = false;
         }
 
         // check if the email is already in the database
@@ -649,7 +637,7 @@ route.get("/admin/employees/:_id/edit", async (req, res) => {
         const {
             _id
         } = req.params;
-        // search the employee and take all the data without the password
+        // search the employee and take all the data without the password and last login
         const employee = await Admin.findOne({
             _id,
         }).then((employee) => {
@@ -684,7 +672,7 @@ route.post("/admin/employees/:_id/edit", async (req, res) => {
             permissionsAdmin,
         } = req.body;
 
-        
+
         permissionsWrite = permissionsWrite == "on" || permissionsWrite == "true";
         permissionsReview = permissionsReview == "on" || permissionsReview == "true";
         if (permissionsAdmin == "on" || permissionsAdmin == "true") {
@@ -694,9 +682,11 @@ route.post("/admin/employees/:_id/edit", async (req, res) => {
         } else {
             permissionsAdmin = false;
         }
+
         const checkEmail = await Admin.findOne({
             email,
         });
+
         if (checkEmail && checkEmail._id != _id) {
             res.redirect(`/admin/employees/${_id}/edit?error=email`);
         } else {
@@ -758,29 +748,29 @@ route.get("/admin/profile", async (req, res) => {
 
 route.post("/admin/profile", async (req, res) => {
     if (req.session.login) {
-        console.log(req.body);
         const {
             name,
-            email,
             password,
             password_confirmation,
-        } = req.body;
-        // check if the email is already in the database
+        } = req.body
 
-        // verify if the password and the confirm password match
-        if (password != password_confirmation) {
-            res.redirect("/admin/profile?error=password");
-        } else {
-            // update the user
+        if (password == "" && password_confirmation == "") {
             await Admin.findOneAndUpdate({
                 name: req.session.login,
             }, {
                 name,
-                email,
+            });
+        } else if (password != password_confirmation) {
+            res.redirect("/admin/profile?error=password");
+        } else {
+            await Admin.findOneAndUpdate({
+                name: req.session.login,
+            }, {
+                name,
                 password,
             });
-            res.redirect("/admin/profile");
         }
+        res.redirect("/admin/logout");
     } else {
         res.redirect("/admin/login");
     }

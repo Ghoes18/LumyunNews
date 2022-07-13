@@ -9,7 +9,7 @@
             <div class="user-account">
                 <div class="user-account-info">
                     <i class="fa-solid fa-user"></i>
-                    <a href="/admin/profile"><span><%=login.split(' ')[0]%></span></a>
+                    <a href="/admin/profile" title="Perfil"><span><%=login.split(' ')[0]%></span></a>
                 </div>
                 <div class="user-account-actions">
                     <a href="logout">
@@ -53,13 +53,19 @@
                                     <% } else { %>
                                         <td>Nenhuma permissão</td>
                                     <% } %>
-                                    <td><%- employees[i].last_login %></td>
+                                    <td>
+                                        <% if (employees[i].last_login) { %>
+                                            <%- employees[i].last_login %>
+                                        <% } else { %>
+                                            <p>Nenhum acesso</p>
+                                        <% } %>
+                                    </td>
                                     <td>
                                         <a href="/admin/employees/<%- employees[i]._id %>/edit">
-                                            <i class="fa-solid fa-pen"></i>
+                                            <i class="fa-solid fa-pen" title="Editar"></i>
                                         </a>
                                         <a href="/admin/employees/<%- employees[i]._id %>/delete">
-                                            <i class="fa-solid fa-trash"></i>
+                                            <i class="fa-solid fa-trash" title="Excluir"></i>
                                         </a>
                                     </td>
                                 </tr>
